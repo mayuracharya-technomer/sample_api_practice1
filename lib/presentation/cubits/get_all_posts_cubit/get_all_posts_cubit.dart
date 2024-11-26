@@ -12,6 +12,7 @@ class GetAllPostsCubit extends Cubit<GetAllPostsState> {
 
 
   getAllPosts()async{
+    emit(GetAllPostsLoading());
     final res= await sampleRepository.getallPosts();
 
     res.fold((error){

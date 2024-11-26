@@ -1,5 +1,7 @@
 
 
+import 'package:sample_api_practice1/data/models/user_response_model.dart';
+
 sealed class GetAllUserDataState{
   const GetAllUserDataState();
 }
@@ -14,7 +16,7 @@ class GetAllUserDataLoading extends GetAllUserDataState{
 }
 
 class GetAllUserDataSuccess extends GetAllUserDataState{
-  final dynamic data;
+  final UserResponseModel data;
   GetAllUserDataSuccess(this.data);
 }
 

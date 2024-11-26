@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sample_api_practice1/data/data_sources/remote/sample_remote_data_source.dart';
+import 'package:sample_api_practice1/data/models/user_response_model.dart';
 import 'package:sample_api_practice1/domain/app_error.dart';
 import 'package:sample_api_practice1/domain/repositories/sample_repository.dart';
 
@@ -12,7 +13,7 @@ class SampleRepositoryImpl implements SampleRepository {
   SampleRepositoryImpl(this._sampleRemoteDataSource);
 
   @override
-  Future<Either<AppError, dynamic>> getAllDummyData() async {
+  Future<Either<AppError, UserResponseModel>> getAllDummyData() async {
     try {
       dynamic res = await _sampleRemoteDataSource.getAllDummyData();
       return right(res);

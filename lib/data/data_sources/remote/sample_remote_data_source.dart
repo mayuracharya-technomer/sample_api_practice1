@@ -2,10 +2,11 @@
 
 import 'package:injectable/injectable.dart';
 import 'package:sample_api_practice1/core/api_service/api_client.dart';
+import 'package:sample_api_practice1/data/models/user_response_model.dart';
 
 abstract class SampleRemoteDataSource{
 
-  Future<dynamic> getAllDummyData();
+  Future<UserResponseModel> getAllDummyData();
 
   Future<dynamic> getAllDogsName();
 
@@ -20,9 +21,9 @@ class SampleRemoteDataSourceImpl implements SampleRemoteDataSource{
 
   SampleRemoteDataSourceImpl(this._client);
   @override
-  Future getAllDummyData() async{
+  Future<UserResponseModel> getAllDummyData() async{
     final res= await _client.get('https://reqres.in/api/users');
-    return res;
+    return UserResponseModel.fromJson(res);
   }
 
   @override

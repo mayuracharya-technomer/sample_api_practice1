@@ -51,11 +51,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("api test"),),
-      body: BlocBuilder<GetAllPostsCubit, GetAllPostsState>(
+      body: BlocBuilder<GetAllUserDataCubit, GetAllUserDataState>(
         builder: (context, state) {
-          if (state is GetAllPostsSuccess) {
+
+          if(state is GetAllUserDataLoading){
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is GetAllUserDataSuccess) {
             return Center(
-              child: Text("${state.data}"),
+              child: Text("${state.data.data[2].lastName}"),
             );
           }
 
@@ -64,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.read<GetAllPostsCubit>().getAllPosts();
+          context.read<GetAllUserDataCubit>().getAllUserData();
         },
         tooltip: 'get data',
         child: const Icon(Icons.get_app_rounded),
