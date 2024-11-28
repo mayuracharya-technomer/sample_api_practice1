@@ -11,6 +11,8 @@ abstract class SampleRemoteDataSource{
   Future<dynamic> getAllDogsName();
 
   Future<dynamic> getallPosts();
+
+  Future<dynamic> login(Map<String, dynamic> body);
 }
 
 
@@ -35,6 +37,12 @@ class SampleRemoteDataSourceImpl implements SampleRemoteDataSource{
   @override
   Future getallPosts() async{
     final res= await _client.get("https://jsonplaceholder.typicode.com/posts");
+    return res;
+  }
+
+  @override
+  Future login(Map<String, dynamic> body) async{
+    final res= await _client.post("https://reqres.in/api/login");
     return res;
   }
 

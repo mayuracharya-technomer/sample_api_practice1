@@ -41,4 +41,14 @@ class SampleRepositoryImpl implements SampleRepository {
       return left(AppError(errormessage: e.toString()));
     }
   }
+
+  @override
+  Future<Either<AppError, dynamic>> login(Map<String, dynamic> body) async{
+    try {
+      dynamic res = await _sampleRemoteDataSource.login(body);
+      return right(res);
+    } catch (e) {
+      return left(AppError(errormessage: e.toString()));
+    }
+  }
 }

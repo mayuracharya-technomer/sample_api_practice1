@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sample_api_practice1/domain/entities/params/login_params.dart';
 import 'package:sample_api_practice1/get_it/get_it.dart';
 import 'package:sample_api_practice1/presentation/cubits/get_all_posts_cubit/get_all_posts_cubit.dart';
 import 'package:sample_api_practice1/presentation/cubits/get_all_user_data_cubit/get_all_user_data_cubit.dart';
 import 'package:sample_api_practice1/presentation/cubits/get_all_user_data_cubit/get_all_user_data_state.dart';
+
+import 'presentation/cubits/login_cubit/login_cubit.dart';
 
 void main() {
   configureDependencies();
@@ -71,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.read<GetAllUserDataCubit>().getAllUserData();
+        //  context.read<LoginCubit>().login({"username":"mayur", "email":"sdkfsd"});
+          context.read<LoginCubit>().login(LoginParams(username: "mayur", email: "mayur@gmail.ocm", password: "sdfljsdlfjsl"));
         },
         tooltip: 'get data',
         child: const Icon(Icons.get_app_rounded),

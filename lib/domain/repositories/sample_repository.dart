@@ -14,4 +14,7 @@ abstract class SampleRepository{
 
   Future<Either<AppError,dynamic>> getallPosts();
 
+  Future<Either<AppError,dynamic>> login(Map<String, dynamic> body);
+
+
 }
